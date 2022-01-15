@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcSimpleBlog.DataAccess", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcSimpleBlog.Business", "MvcSimpleBlog.Business\MvcSimpleBlog.Business.csproj", "{5D90EEF7-2F11-4454-86B3-A46A0EDF110D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcSimpleBlog.WebUi", "WebUi\MvcSimpleBlog.WebUi.csproj", "{0B43D616-9916-448F-B9BD-A2495E5739BA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{5D90EEF7-2F11-4454-86B3-A46A0EDF110D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5D90EEF7-2F11-4454-86B3-A46A0EDF110D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5D90EEF7-2F11-4454-86B3-A46A0EDF110D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B43D616-9916-448F-B9BD-A2495E5739BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B43D616-9916-448F-B9BD-A2495E5739BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B43D616-9916-448F-B9BD-A2495E5739BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B43D616-9916-448F-B9BD-A2495E5739BA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

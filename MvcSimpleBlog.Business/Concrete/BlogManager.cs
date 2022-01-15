@@ -1,11 +1,13 @@
 ﻿using MvcSimpleBlog.Business.Abstract;
 using MvcSimpleBlog.DataAccess.Abstract;
 using MvcSimpleBlog.Entities.Concrete;
+using Core.Aspects.Postsharp.ValidationAspects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MvcSimpleBlog.Business.ValidationRules.FluentValidation;
 
 namespace MvcSimpleBlog.Business.Concrete
 {
@@ -18,9 +20,16 @@ namespace MvcSimpleBlog.Business.Concrete
             this.blogDal = blogDal;
         }
 
+        [FluentValidationAspect(typeof(BlogValidator))]
         public void Add(Blog blog)
         {
             blogDal.Add(blog);
+        }
+
+        [FluentValidationAspect(typeof(BlogValidator))]
+        public void Update(Blog blog)
+        {
+            blogDal.Update(blog);
         }
 
         public void Delete(Blog blog)
@@ -51,11 +60,6 @@ namespace MvcSimpleBlog.Business.Concrete
         public List<Blog> GetByUserId(int userId)
         {
             return blogDal.GetAllDetails(b => b.UserId == userId);
-        }
-
-        public void Update(Blog blog)
-        {
-            blogDal.Update(blog);
         }
     }
 }

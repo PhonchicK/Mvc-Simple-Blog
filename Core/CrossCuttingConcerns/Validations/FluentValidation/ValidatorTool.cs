@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Web.ModelBinding;
 using FluentValidation;
 
-namespace ETicaretDersiProje.Core.CrossCuttingConcerns.Validations.FluentValidation
+namespace Core.CrossCuttingConcerns.Validations.FluentValidation
 {
     public class ValidatorTool
     {

@@ -5,9 +5,9 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
-using ETicaretDersiProje.Core.Entities;
+using Core.Entities;
 
-namespace ETicaretDersiProje.Core.DataAccess.EntityFramework
+namespace Core.DataAccess.EntityFramework
 {
     public class EfEntityRepositoryBase<TEntity,TContext>:IEntityRepository<TEntity>
         where TEntity:class ,IEntity,new()

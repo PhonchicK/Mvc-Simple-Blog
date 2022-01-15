@@ -1,4 +1,4 @@
-﻿using ETicaretDersiProje.Core.DataAccess.EntityFramework;
+﻿using Core.DataAccess.EntityFramework;
 using MvcSimpleBlog.DataAccess.Abstract;
 using MvcSimpleBlog.Entities.Concrete;
 using System;

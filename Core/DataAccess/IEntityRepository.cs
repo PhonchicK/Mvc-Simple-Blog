@@ -4,9 +4,9 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
-using ETicaretDersiProje.Core.Entities;
+using Core.Entities;
 
-namespace ETicaretDersiProje.Core.DataAccess
+namespace Core.DataAccess
 {
     public interface IEntityRepository<T> where T:class ,IEntity,new()
     {

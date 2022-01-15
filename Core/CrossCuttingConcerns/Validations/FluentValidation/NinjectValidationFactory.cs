@@ -7,7 +7,7 @@ using FluentValidation;
 using Ninject;
 using Ninject.Modules;
 
-namespace ETicaretDersiProje.Core.CrossCuttingConcerns.Validations.FluentValidation
+namespace Core.CrossCuttingConcerns.Validations.FluentValidation
 {
     public class NinjectValidationFactory:ValidatorFactoryBase
     {

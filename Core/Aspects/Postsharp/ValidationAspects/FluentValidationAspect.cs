@@ -4,7 +4,7 @@ using ETicaretDersiProje.Core.CrossCuttingConcerns.Validations.FluentValidation;
 using FluentValidation;
 using PostSharp.Aspects;
 
-namespace ETicaretDersiProje.Core.Aspects.Postsharp.ValidationAspects
+namespace Core.Aspects.Postsharp.ValidationAspects
 {
     [Serializable]
     public class FluentValidationAspect:OnMethodBoundaryAspect

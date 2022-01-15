@@ -8,7 +8,7 @@ using System.Web.Routing;
 using Ninject;
 using Ninject.Modules;
 
-namespace ETicaretDersiProje.Core.Utilities.Mvc.Infrastructure
+namespace Core.Utilities.Mvc.Infrastructure
 {
     public class NinjectControllerFactory:DefaultControllerFactory
     {
