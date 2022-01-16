@@ -37,14 +37,14 @@ namespace MvcSimpleBlog.Business.Concrete
             blogDal.Delete(blog);
         }
 
-        public List<Blog> GetAll()
+        public List<Blog> GetAll(int page = 1)
         {
-            return blogDal.GetAllDetails();
+            return blogDal.GetAllDetails().Skip((page - 1) * 10).Take(10).ToList();
         }
 
-        public List<Blog> GetByCategoryId(int categoryId)
+        public List<Blog> GetByCategoryId(int categoryId, int page = 1)
         {
-            return blogDal.GetAllDetails(b => b.CategoryId == categoryId);
+            return blogDal.GetAllDetails(b => b.CategoryId == categoryId).Skip((page - 1) * 10).Take(10).ToList();
         }
 
         public Blog GetById(int id)
@@ -57,9 +57,9 @@ namespace MvcSimpleBlog.Business.Concrete
             return blogDal.GetDetails(b => b.SeoUrl == seroUrl);
         }
 
-        public List<Blog> GetByUserId(int userId)
+        public List<Blog> GetByUserId(int userId, int page = 1)
         {
-            return blogDal.GetAllDetails(b => b.UserId == userId);
+            return blogDal.GetAllDetails(b => b.UserId == userId).Skip((page - 1) * 10).Take(10).ToList();
         }
     }
 }

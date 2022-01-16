@@ -1,0 +1,35 @@
+﻿@model MvcSimpleBlog.Entities.Concrete.Blog
+@{
+    ViewBag.Title = "dsa";
+}
+<div class="card-header">
+    <span>By</span>
+    <span class="text-success"> @Model.User.Username</span>
+    <span>On</span>
+    <span class="text-success"> 28 Dec 2018</span>
+</div>
+<div class="card-body">
+    <img class="card-img-top" src="img/kajal2.png" alt="bootstrap simple blog">
+    <hr>
+    <h2 class="card-title">@Model.Title</h2>
+    <p>
+        @Model.Content
+    </p>
+</div>
+<div class="card-footer">
+    <div class="row">
+        <div class="col col-sm-10 col-md-10">
+            <div class="form-group">
+                <input type="text" name="comment" class="form-control rounded-0" value="Enter comment...">
+            </div>
+        </div>
+        <div class="col col-sm-2 col-md-2">
+            <button class="btn btn-warning rounded-0">Submit</button>
+        </div>
+    </div>
+    <div class="comment-section">
+        <span class="text-success bg-faded">Nice Aritcle...</span>
+        <span class="text-success">Wow...Nice!</span>
+        <span class="text-success">Nice one...Great thanks...</span>
+    </div>
+</div>

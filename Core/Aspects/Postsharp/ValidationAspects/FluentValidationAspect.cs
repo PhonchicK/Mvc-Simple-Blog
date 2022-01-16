@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Linq;
-using ETicaretDersiProje.Core.CrossCuttingConcerns.Validations.FluentValidation;
+using Core.CrossCuttingConcerns.Validations.FluentValidation;
 using FluentValidation;
 using PostSharp.Aspects;
 

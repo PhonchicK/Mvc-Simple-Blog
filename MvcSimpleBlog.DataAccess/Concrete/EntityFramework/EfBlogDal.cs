@@ -16,7 +16,8 @@ namespace MvcSimpleBlog.DataAccess.Concrete.EntityFramework
         {
             using (BlogContext context = new BlogContext())
             {
-                return context.Blogs.Include("Category").Include("User").Where(filter).ToList();
+                return filter == null ? context.Blogs.Include("Category").Include("User").ToList() : 
+                    context.Blogs.Include("Category").Include("User").Where(filter).ToList();
             }
         }
 

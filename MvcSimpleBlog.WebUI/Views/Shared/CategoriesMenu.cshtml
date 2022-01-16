@@ -1,0 +1,6 @@
+﻿@model IEnumerable<MvcSimpleBlog.Entities.Concrete.Category>
+
+@foreach (var item in Model)
+{
+    <li class="list-group-item"><a href="#">@item.Name</a></li>
+}
