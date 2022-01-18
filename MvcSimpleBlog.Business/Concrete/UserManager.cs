@@ -1,4 +1,5 @@
-﻿using MvcSimpleBlog.Business.Abstract;
+﻿using Core.Utilities.Security.Hashing;
+using MvcSimpleBlog.Business.Abstract;
 using MvcSimpleBlog.DataAccess.Abstract;
 using MvcSimpleBlog.Entities.Concrete;
 using System;
@@ -36,6 +37,12 @@ namespace MvcSimpleBlog.Business.Concrete
         public User GetById(int id)
         {
             return userDal.Get(u => u.Id == id);
+        }
+
+        public User Login(string username, string password)
+        {
+            password = HashingHelper.MD5Hash(password);
+            return userDal.Get(u => u.Username == username && u.Password == password);
         }
 
         public void Update(User user)

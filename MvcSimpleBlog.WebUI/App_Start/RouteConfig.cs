@@ -14,6 +14,18 @@ namespace MvcSimpleBlog.WebUI
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "AdminIndex",
+                url: "Admin",
+                new { controller = "Admin", action = "Index" }
+            );
+
+            routes.MapRoute(
+                name: "Admin",
+                url: "Admin/{action}",
+                new { controller = "Admin" }
+            );
+
+            routes.MapRoute(
                 name: "Home",
                 url: "{page}",
                 new { controller = "Home", action = "Index", page = UrlParameter.Optional }
