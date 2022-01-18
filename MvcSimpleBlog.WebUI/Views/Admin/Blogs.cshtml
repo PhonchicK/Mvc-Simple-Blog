@@ -1,0 +1,97 @@
+﻿@model IEnumerable<MvcSimpleBlog.Entities.Concrete.Blog>
+@{
+    ViewBag.Title = "Blogs";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int page = Request.Url.Segments.Count() > 3 ? int.Parse(Request.Url.Segments[3]) : 1;
+}
+@*<!--SEARCH-->
+    <section id="search" class="py-4 mb-4 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 ml-auto">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search Posts...">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary">Search</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--END SEARCH-->*@
+<!-- POSTS-->
+<section id="posts">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>
+                            Posts
+                            <a href="NewBlog" class="btn btn-secondary">
+                                <i class="fas fa-plus-square"></i> New Blog
+                            </a>
+                        </h4>
+                    </div>
+                    <table class="table table-striped">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>#</th>
+                                <th>Title</th>
+                                <th>Category</th>
+                                <th>User</th>
+                                <th>Date</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.Id</td>
+                                    <td>@item.Title</td>
+                                    <td>@item.Category.Name</td>
+                                    <td>@item.User.Username</td>
+                                    <td>@item.Date.ToLongDateString()</td>
+                                    <td>
+                                        <a href="details.html" class="btn btn-secondary">
+                                            <i class="fas fa-angle-double-right"></i> Details
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                    <!--PAGINATION-->
+                    <nav class="ml-4">
+                        <ul class="pagination">
+                            @if (page != 1)
+                            {
+                                <li class="page-item">
+                                    <a href="#" class="page-link">Previous</a>
+                                </li>
+                            }
+                            @for (int i = 1; i <= ViewBag.pageCount; i++)
+                            {
+                                <li class="page-item@(i == page ? " active" : "")">
+                                    <a href="" class="page-link ">@i</a>
+                                </li>
+                            }
+                            @if (page < ViewBag.pageCount)
+                            {
+                                <li class="page-item">
+                                    <a href="" class="page-link">Next</a>
+                                </li>
+                            }
+                        </ul>
+                    </nav>
+                    <!--END PAGINATION-->
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- END POSTS-->

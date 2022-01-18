@@ -9,9 +9,9 @@ namespace MvcSimpleBlog.Business.Abstract
 {
     public interface IBlogService
     {
-        List<Blog> GetAll(int page = 1);
-        List<Blog> GetByCategoryId(int categoryId, int page = 1);
-        List<Blog> GetByUserId(int userId, int page = 1);
+        List<Blog> GetAll(int page = 1, int itemPerPage = 10);
+        List<Blog> GetByCategoryId(int categoryId, int page = 1, int itemPerPage = 10);
+        List<Blog> GetByUserId(int userId, int page = 1, int itemPerPage = 10);
         Blog GetById(int id);
         Blog GetBySeoUrl(string seroUrl);
         void Add(Blog blog);

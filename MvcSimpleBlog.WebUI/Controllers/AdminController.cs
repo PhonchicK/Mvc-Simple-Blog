@@ -27,7 +27,18 @@ namespace MvcSimpleBlog.WebUI.Controllers
             this.categoryService = categoryService;
             this.userService = userService;
         }
-
+        public ActionResult Index()
+        {
+            var model = new AdminHomeViewModel()
+            {
+                TotalBlogs = blogService.GetAll().Count,
+                TotalCategories = categoryService.GetAll().Count,
+                TotalUsers = userService.GetAll().Count,
+                LatestBlogs = blogService.GetAll()
+            };
+            return View(model);
+        }
+        #region Login
         [AllowAnonymous]
         [HttpGet]
         public ActionResult Login()
@@ -56,16 +67,28 @@ namespace MvcSimpleBlog.WebUI.Controllers
             }
             return View(model);
         }
-        public ActionResult Index()
+        #endregion
+        #region Blogs
+        public ActionResult Blogs(int page = 1)
         {
-            var model = new AdminHomeViewModel()
-            {
-                TotalBlogs = blogService.GetAll().Count,
-                TotalCategories = categoryService.GetAll().Count,
-                TotalUsers = userService.GetAll().Count,
-                LatestBlogs = blogService.GetAll()
-            };
-            return View(model);
+            var result = blogService.GetAll(page, 6);
+            ViewBag.pageCount = (int)((result.Count() + 5) / 6);
+            if (ViewBag.pageCount < page)
+                return HttpNotFound();
+            return View(result);
         }
+        [HttpGet]
+        public ActionResult NewBlog()
+        {
+            ViewBag.Categories = new SelectList(categoryService.GetAll(), "Id", "Name");
+            return View(new Blog());
+        }
+        [HttpPost]
+        public ActionResult NewBlog(Blog blog)
+        {
+            ViewBag.Categories = new SelectList(categoryService.GetAll(), "Id", "Name");
+            return View(blog);
+        }
+        #endregion
     }
 }
