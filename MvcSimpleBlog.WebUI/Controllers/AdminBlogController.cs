@@ -92,6 +92,20 @@ namespace MvcSimpleBlog.WebUI.Controllers
             return View(blog);
         }
 
+        [Route("delete/{id}")]
+        public ActionResult Delete(int id)
+        {
+            Blog deletingBlog = blogService.GetById(id);
+
+            if (deletingBlog == null)
+                return HttpNotFound();
+            if (deletingBlog.User.Auth < (Session["user"] as User).Auth)//if, author of blog have bigger auth than user trying to delete blog
+                return RedirectToAction("Index");
+
+            blogService.Delete(deletingBlog);
+            return RedirectToAction("Index");
+        }
+
         #region General Functions
         private bool ImageUpload(HttpPostedFileBase image, string name, ref string imageLocation)
         {

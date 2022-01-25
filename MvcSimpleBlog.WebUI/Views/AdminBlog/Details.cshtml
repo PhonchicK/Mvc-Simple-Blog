@@ -8,7 +8,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-3">
-                <a href="/admin/deleteblog/@Model.Id" class="btn btn-danger btn-block">
+                <a href="@Url.Action("Delete", "AdminBlog", new { Area = "admin", Model.Id })" class="btn btn-danger btn-block">
                     <i class="fas fa-check"></i> Delete
                 </a>
             </div>

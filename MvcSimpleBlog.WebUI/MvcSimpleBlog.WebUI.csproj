@@ -175,9 +175,6 @@
     <Content Include="Views\Admin\Login.cshtml" />
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
-    <Content Include="Views\Admin\Blogs.cshtml" />
-    <Content Include="Views\Admin\NewBlog.cshtml" />
-    <Content Include="Views\Admin\DetailsBlog.cshtml" />
     <Content Include="Views\AdminBlog\Index.cshtml" />
     <Content Include="Views\AdminBlog\Details.cshtml" />
     <Content Include="Views\AdminBlog\Create.cshtml" />
