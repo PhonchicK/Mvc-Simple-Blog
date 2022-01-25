@@ -1,5 +1,7 @@
-﻿using Core.Utilities.Security.Hashing;
+﻿using Core.Aspects.Postsharp.ValidationAspects;
+using Core.Utilities.Security.Hashing;
 using MvcSimpleBlog.Business.Abstract;
+using MvcSimpleBlog.Business.ValidationRules.FluentValidation;
 using MvcSimpleBlog.DataAccess.Abstract;
 using MvcSimpleBlog.Entities.Concrete;
 using System;
@@ -19,6 +21,7 @@ namespace MvcSimpleBlog.Business.Concrete
             this.userDal = userDal;
         }
 
+        [FluentValidationAspect(typeof(UserValidator))]
         public void Add(User user)
         {
             userDal.Add(user);
@@ -29,9 +32,9 @@ namespace MvcSimpleBlog.Business.Concrete
             userDal.Delete(user);
         }
 
-        public List<User> GetAll()
+        public List<User> GetAll(int page = 1, int itemPerPage = 10)
         {
-            return userDal.GetList();
+            return userDal.GetList().Skip((page - 1) * itemPerPage).Take(itemPerPage).ToList();
         }
 
         public User GetById(int id)
@@ -45,6 +48,7 @@ namespace MvcSimpleBlog.Business.Concrete
             return userDal.Get(u => u.Username == username && u.Password == password);
         }
 
+        [FluentValidationAspect(typeof(UserValidator))]
         public void Update(User user)
         {
             userDal.Update(user);

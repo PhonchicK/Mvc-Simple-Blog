@@ -1,4 +1,6 @@
-﻿using MvcSimpleBlog.Business.Abstract;
+﻿using Core.Aspects.Postsharp.ValidationAspects;
+using MvcSimpleBlog.Business.Abstract;
+using MvcSimpleBlog.Business.ValidationRules.FluentValidation;
 using MvcSimpleBlog.DataAccess.Abstract;
 using MvcSimpleBlog.Entities.Concrete;
 using System;
@@ -18,6 +20,7 @@ namespace MvcSimpleBlog.Business.Concrete
             this.categoryDal = categoryDal;
         }
 
+        [FluentValidationAspect(typeof(CategoryValidator))]
         public void Add(Category category)
         {
             categoryDal.Add(category);
@@ -28,9 +31,9 @@ namespace MvcSimpleBlog.Business.Concrete
             categoryDal.Delete(category);
         }
 
-        public List<Category> GetAll()
+        public List<Category> GetAll(int page = 1, int itemPerPage = 10)
         {
-            return categoryDal.GetList();
+            return categoryDal.GetList().Skip((page - 1) * itemPerPage).Take(itemPerPage).ToList();
         }
 
         public Category GetById(int id)
@@ -38,6 +41,7 @@ namespace MvcSimpleBlog.Business.Concrete
             return categoryDal.Get(c => c.Id == id);
         }
 
+        [FluentValidationAspect(typeof(CategoryValidator))]
         public void Update(Category category)
         {
             categoryDal.Update(category);

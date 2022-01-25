@@ -154,6 +154,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminBlogController.cs" />
+    <Compile Include="Controllers\AdminCategoryController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Filters\Auth.cs" />
@@ -178,6 +179,7 @@
     <Content Include="Views\AdminBlog\Index.cshtml" />
     <Content Include="Views\AdminBlog\Details.cshtml" />
     <Content Include="Views\AdminBlog\Create.cshtml" />
+    <Content Include="Views\AdminCategory\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

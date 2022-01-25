@@ -14,10 +14,11 @@ namespace MvcSimpleBlog.Business.ValidationRules.FluentValidation
     {
         public BlogValidator()
         {
-            RuleFor(x => x.Title).NotEmpty().WithMessage("Başlık boş olamaz")
-                .MaximumLength(50).WithMessage("Başlık en fazla 50 karakter uzunluğunda olabilir");
-            RuleFor(x => x).Must(SeoUrlControl).WithMessage("Aynı Seo Url i kullanan bir blog bulunuyor");
-            RuleFor(x => x.SeoUrl).NotEmpty().WithMessage("Seo Url boş olamaz");
+            RuleFor(x => x.Title).NotEmpty().WithMessage("Blog title can't be empty.")
+                .MaximumLength(50).WithMessage("Blog title must be shorter than 50 character.");
+
+            RuleFor(x => x.SeoUrl).NotEmpty().WithMessage("Blog Seo Url can't be empty.");
+            RuleFor(x => x).Must(SeoUrlControl).WithMessage("Blog Seo Url must be unique");
         }
         private bool SeoUrlControl(Blog blog)
         {

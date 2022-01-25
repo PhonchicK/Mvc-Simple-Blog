@@ -13,7 +13,6 @@ namespace MvcSimpleBlog.WebUI.Controllers
     [Auth]
     [RouteArea("admin")]
     [RoutePrefix("blog")]
-    [Route("{action = Index}")]
     public class AdminBlogController : Controller
     {
         private IBlogService blogService;
@@ -23,7 +22,8 @@ namespace MvcSimpleBlog.WebUI.Controllers
             this.blogService = _blogService;
             this.categoryService = _categoryService;
         }
-        [Route]
+
+        [Route("{page?}")]
         public ActionResult Index(int page = 1)
         {
             return View(blogService.GetAll(page, 6));

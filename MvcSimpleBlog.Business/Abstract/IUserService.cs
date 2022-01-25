@@ -9,7 +9,7 @@ namespace MvcSimpleBlog.Business.Abstract
 {
     public interface IUserService
     {
-        List<User> GetAll();
+        List<User> GetAll(int page = 1, int itemPerPage = 10);
         User GetById(int id);
         User Login(string username, string password);
         void Add(User user);

@@ -9,7 +9,7 @@ namespace MvcSimpleBlog.Business.Abstract
 {
     public interface ICategoryService
     {
-        List<Category> GetAll();
+        List<Category> GetAll(int page = 1, int itemPerPage = 10);
         Category GetById(int id);
         void Add(Category category);
         void Update(Category category);
