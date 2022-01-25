@@ -3,29 +3,29 @@
     ViewBag.Title = "Dashboard";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-<!--ACTIONS-->
-<section id="actions" class="py-4 mb-4 bg-light">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3">
-                <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#addPostModal">
-                    <i class="fas fa-plus"></i> Add Post
-                </a>
-            </div>
-            <div class="col-md-3">
-                <a href="#" class="btn btn-success btn-block" data-toggle="modal" data-target="#addCategoryModal">
-                    <i class="fas fa-plus"></i> Add Category
-                </a>
-            </div>
-            <div class="col-md-3">
-                <a href="#" class="btn btn-warning btn-block" data-toggle="modal" data-target="#addUserModal">
-                    <i class="fas fa-plus"></i> Add User
-                </a>
+@*<!--ACTIONS-->
+    <section id="actions" class="py-4 mb-4 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#addPostModal">
+                        <i class="fas fa-plus"></i> Add Post
+                    </a>
+                </div>
+                <div class="col-md-3">
+                    <a href="#" class="btn btn-success btn-block" data-toggle="modal" data-target="#addCategoryModal">
+                        <i class="fas fa-plus"></i> Add Category
+                    </a>
+                </div>
+                <div class="col-md-3">
+                    <a href="#" class="btn btn-warning btn-block" data-toggle="modal" data-target="#addUserModal">
+                        <i class="fas fa-plus"></i> Add User
+                    </a>
+                </div>
             </div>
         </div>
-    </div>
-</section>
-<!--END ACTIONS-->
+    </section>
+    <!--END ACTIONS-->*@
 <!-- POSTS-->
 <section id="posts">
     <div class="container">
@@ -55,7 +55,7 @@
                                     <td>@item.Title</td>
                                     <td>@item.Category.Name</td>
                                     <td>@item.User.Username</td>
-                                    <td>@item.Date.ToLongDateString()</td>
+                                    <td>@item.Date.Value.ToLongDateString()</td>
                                     <td>
                                         <a href="details.html" class="btn btn-secondary">
                                             <i class="fas fa-angle-double-right"></i> Details

@@ -8,13 +8,13 @@
     <div class="container">
         <div class="row">
             <div class="col-md-3">
-                <a href="index.html" class="btn btn-light btn-block">
+                <a href="@Url.Action("", "Admin", new { Area = "admin" })" class="btn btn-light btn-block">
                     <i class="fas fa-arrow-left"></i> Back To Dashboard
                 </a>
             </div>
             <div class="col-md-3">
-                <a href="index.html" class="btn btn-success btn-block">
-                    <i class="fas fa-check"></i> Add
+                <a href="@Url.Action("", "AdminBlog", new { Area = "admin" })" class="btn btn-light btn-block">
+                    <i class="fas fa-check"></i> Back To Blogs
                 </a>
             </div>
         </div>
@@ -31,7 +31,7 @@
                         <h4>Blog</h4>
                     </div>
                     <div class="card-body">
-                        @using (Html.BeginForm("NewBlog", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        @using (Html.BeginForm("Create", "AdminBlog", FormMethod.Post, new { enctype = "multipart/form-data" }))
                         {
                             @Html.AntiForgeryToken()
                             <div class="form-group">
@@ -47,10 +47,10 @@
                                 @Html.DropDownListFor(x => x.CategoryId, (ViewBag.Categories as SelectList), "Select Category...", new { @class = "form-control" })
                             </div>
                             <div class="form-group">
-                                <label for="Image">Image</label>
+                                <label for="image">Image</label>
                                 <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="Image" name="Image" />
-                                    <label for="Image" class="custom-file-label">Choose File</label>
+                                    <input type="file" class="custom-file-input" id="image" name="image" />
+                                    <label for="image" class="custom-file-label">Choose File</label>
                                 </div>
                                 <small class="form-text text-muted">Max Size 5mb</small>
                             </div>

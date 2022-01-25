@@ -1,25 +1,10 @@
-﻿@model IEnumerable<MvcSimpleBlog.Entities.Concrete.Blog>
+﻿@model IEnumerable<MvcSimpleBlog.Entities.Concrete.Blog> 
 @{
     ViewBag.Title = "Blogs";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
-    int page = Request.Url.Segments.Count() > 3 ? int.Parse(Request.Url.Segments[3]) : 1;
+
+    int page = Request.Url.Segments.Count() > 3 ? int.Parse(Request.Url.Segments[3]) : 1;//Get page value from url. If page value is empty, value = 1
 }
-@*<!--SEARCH-->
-    <section id="search" class="py-4 mb-4 bg-light">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 ml-auto">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search Posts...">
-                        <div class="input-group-append">
-                            <button class="btn btn-primary">Search</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--END SEARCH-->*@
 <!-- POSTS-->
 <section id="posts">
     <div class="container">
@@ -29,7 +14,7 @@
                     <div class="card-header">
                         <h4>
                             Posts
-                            <a href="NewBlog" class="btn btn-secondary">
+                            <a href="@Url.Action("Create", "AdminBlog", new { Area = "admin" })" class="btn btn-secondary">
                                 <i class="fas fa-plus-square"></i> New Blog
                             </a>
                         </h4>
@@ -55,7 +40,7 @@
                                     <td>@item.User.Username</td>
                                     <td>@item.Date.Value.ToLongDateString()</td>
                                     <td>
-                                        <a href="details.html" class="btn btn-secondary">
+                                        <a href="@Url.Action("Details", "AdminBlog", new { Area = "admin" , item.Id})" class="btn btn-secondary">
                                             <i class="fas fa-angle-double-right"></i> Details
                                         </a>
                                     </td>

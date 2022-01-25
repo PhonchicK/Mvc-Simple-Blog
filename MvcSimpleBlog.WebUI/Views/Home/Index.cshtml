@@ -1,6 +1,13 @@
 ﻿@model IEnumerable<MvcSimpleBlog.Entities.Concrete.Blog>
+@using System.Text.RegularExpressions;
 @{
     ViewBag.Title = "Home";
+    string ScrubHtml(string value)
+    {
+        var step1 = Regex.Replace(value, @"<[^>]+>|&nbsp;", "").Trim();
+        var step2 = Regex.Replace(step1, @"\s{2,}", " ");
+        return step2;
+    }
 }
 @foreach (var item in Model)
 {
@@ -12,11 +19,12 @@
             <span class="text-success"> 28 Dec 2018</span>
         </div>
         <div class="card-body">
-            <img class="card-img-top" src="~/Content/Uploads/@item.Image" alt="@item.Title">
+            <img class="card-img-top" src="@item.Image" alt="@item.Title">
             <hr>
             <h2 class="card-title">@item.Title</h2>
-            <p class="card-text">@item.Content</p>
-            @Html.ActionLink("Read more","Details",new { @seoUrl = item.SeoUrl }, new { @class = "btn btn-primary" })
+
+            <p class="card-text">@( ScrubHtml(item.Content).Length > 199 ? ScrubHtml(item.Content).Substring(0, 200) : ScrubHtml(item.Content))</p>
+            @Html.ActionLink("Read more", "Details", new { @seoUrl = item.SeoUrl }, new { @class = "btn btn-primary" })
         </div>
     </div>
 }

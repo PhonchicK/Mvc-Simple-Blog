@@ -14,7 +14,6 @@ namespace MvcSimpleBlog.Business.Concrete
     public class BlogManager : IBlogService
     {
         private IBlogDal blogDal;
-
         public BlogManager(IBlogDal blogDal)
         {
             this.blogDal = blogDal;
@@ -49,7 +48,7 @@ namespace MvcSimpleBlog.Business.Concrete
 
         public Blog GetById(int id)
         {
-            return blogDal.Get(b => b.Id == id);
+            return blogDal.GetDetails(b => b.Id == id);
         }
 
         public Blog GetBySeoUrl(string seroUrl)
