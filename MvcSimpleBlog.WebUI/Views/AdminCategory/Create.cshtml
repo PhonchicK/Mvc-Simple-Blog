@@ -1,0 +1,48 @@
+﻿@model MvcSimpleBlog.Entities.Concrete.Category
+@{
+    ViewBag.Title = "New Category";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<!--ACTIONS-->
+<section id="actions" class="py-4 mb-4 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <a href="@Url.Action("", "AdminCategory", new { Area = "admin" })" class="btn btn-light btn-block">
+                    <i class="fas fa-check"></i> Back To Categories
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+<!--END ACTIONS-->
+<!-- DETAILS-->
+<section id="details">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Category</h4>
+                    </div>
+                    <div class="card-body">
+                        @using (Html.BeginForm("Create", "AdminCategory", FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="form-group">
+                                <label for="Name">Name</label>
+                                @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+                            </div>
+                            <div class="form-group">
+                                <label for="SeoUrl">Seo Url</label>
+                                @Html.TextBoxFor(x => x.SeoUrl, new { @class = "form-control" })
+                            </div>
+                            <input type="submit" class="btn btn-success btn-block" value="Add" />
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- END DETAILS-->

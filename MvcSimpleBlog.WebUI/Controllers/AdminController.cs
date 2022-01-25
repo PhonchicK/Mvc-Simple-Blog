@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNet.Identity.Owin;
-using Microsoft.AspNet.Identity.EntityFramework;
-using MvcSimpleBlog.Business.Abstract;
+﻿using MvcSimpleBlog.Business.Abstract;
 using MvcSimpleBlog.Entities.Concrete;
 using MvcSimpleBlog.WebUI.Models;
 using System;

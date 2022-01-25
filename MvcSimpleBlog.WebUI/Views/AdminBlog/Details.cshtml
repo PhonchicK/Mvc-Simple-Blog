@@ -31,15 +31,15 @@
                         {
                             @Html.AntiForgeryToken()
                             <div class="form-group">
-                                <label for="title">Title</label>
+                                <label for="Title">Title</label>
                                 @Html.TextBoxFor(x => x.Title, new { @class = "form-control" })
                             </div>
                             <div class="form-group">
-                                <label for="seoUrl">Seo Url</label>
+                                <label for="SeoUrl">Seo Url</label>
                                 @Html.TextBoxFor(x => x.SeoUrl, new { @class = "form-control" })
                             </div>
                             <div class="form-group">
-                                <label for="category">Category</label>
+                                <label for="Category">Category</label>
                                 @Html.DropDownListFor(x => x.CategoryId, (ViewBag.Categories as SelectList), "Select Category...", new { @class = "form-control" })
                             </div>
                             <div class="form-group">

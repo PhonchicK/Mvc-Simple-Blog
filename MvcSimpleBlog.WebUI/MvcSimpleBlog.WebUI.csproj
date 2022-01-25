@@ -180,6 +180,8 @@
     <Content Include="Views\AdminBlog\Details.cshtml" />
     <Content Include="Views\AdminBlog\Create.cshtml" />
     <Content Include="Views\AdminCategory\Index.cshtml" />
+    <Content Include="Views\AdminCategory\Details.cshtml" />
+    <Content Include="Views\AdminCategory\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

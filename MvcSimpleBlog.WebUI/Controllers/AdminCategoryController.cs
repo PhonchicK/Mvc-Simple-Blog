@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using FluentValidation.Mvc;
 
 namespace MvcSimpleBlog.WebUI.Controllers
 {
@@ -28,11 +29,63 @@ namespace MvcSimpleBlog.WebUI.Controllers
         }
 
         [HttpGet]
-        [ValidateAntiForgeryToken]
         [Route("new")]
         public ActionResult Create()
         {
             return View(new Category());
+        }
+
+        [HttpGet]
+        [ValidateAntiForgeryToken]
+        [Route("new")]
+        public ActionResult Create(Category category)
+        {
+            if(ModelState.IsValid)
+            {
+                categoryService.Add(category);
+                return RedirectToAction("Index");
+            }
+            return View(category);
+        }
+
+        [HttpGet]
+        [Route("edit/{id}")]
+        public ActionResult Details(int id)
+        {
+            Category category = categoryService.GetById(id);
+            if (category == null)
+                return HttpNotFound();
+            
+            return View(category);
+        }
+
+        [HttpGet]
+        [ValidateAntiForgeryToken]
+        [Route("edit/{id}")]
+        public ActionResult Details(int id, Category category)
+        {
+            if (ModelState.IsValid)
+            {
+                Category updatingCategory = categoryService.GetById(id);
+                if (updatingCategory == null)
+                    return HttpNotFound();
+
+                categoryService.Update(category);
+
+                return RedirectToAction("Index");
+            }
+            return View(category);
+        }
+
+        [Route("delete/{id}")]
+        public ActionResult Delete(int id)
+        {
+            Category deletingCategory = categoryService.GetById(id);
+            if (deletingCategory == null)
+                return HttpNotFound();
+
+            categoryService.Delete(deletingCategory);
+            return RedirectToAction("Index");
         }
     }
 }
