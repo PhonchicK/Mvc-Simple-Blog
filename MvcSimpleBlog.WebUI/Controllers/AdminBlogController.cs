@@ -24,10 +24,11 @@ namespace MvcSimpleBlog.WebUI.Controllers
             this.categoryService = _categoryService;
         }
 
-        [Route("{page?}")]
+        [Route("{page:int?}")]
         public ActionResult Index(int page = 1)
         {
-            return View(blogService.GetAll(page, 6));
+            ViewBag.pageCount = (int)((blogService.BlogCount() + 9) / 10);
+            return View(blogService.GetAll(page));
         }
 
         [HttpGet, Route("new")]
@@ -80,7 +81,7 @@ namespace MvcSimpleBlog.WebUI.Controllers
                     ImageUpload(image, blog.SeoUrl, ref imagePath);
                     blog.Image = imagePath;
 
-                    blog.UserId = updateBlog.Id;
+                    blog.UserId = updateBlog.UserId;
                     blog.Date = updateBlog.Date;
                     blog.Id = id;
 

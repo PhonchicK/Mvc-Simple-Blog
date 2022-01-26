@@ -12,6 +12,7 @@ namespace MvcSimpleBlog.Business.Abstract
         List<User> GetAll(int page = 1, int itemPerPage = 10);
         User GetById(int id);
         User Login(string username, string password);
+        int UserCount();
         void Add(User user);
         void Update(User user);
         void Delete(User user);

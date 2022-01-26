@@ -24,6 +24,7 @@ namespace MvcSimpleBlog.Business.Concrete
         [FluentValidationAspect(typeof(UserValidator))]
         public void Add(User user)
         {
+            user.Password = HashingHelper.MD5Hash(user.Password);
             userDal.Add(user);
         }
 
@@ -34,12 +35,12 @@ namespace MvcSimpleBlog.Business.Concrete
 
         public List<User> GetAll(int page = 1, int itemPerPage = 10)
         {
-            return userDal.GetList().Skip((page - 1) * itemPerPage).Take(itemPerPage).ToList();
+            return userDal.GetAllDetails().Skip((page - 1) * itemPerPage).Take(itemPerPage).ToList();
         }
 
         public User GetById(int id)
         {
-            return userDal.Get(u => u.Id == id);
+            return userDal.GetDetails(u => u.Id == id);
         }
 
         public User Login(string username, string password)
@@ -51,7 +52,13 @@ namespace MvcSimpleBlog.Business.Concrete
         [FluentValidationAspect(typeof(UserValidator))]
         public void Update(User user)
         {
+            user.Password = HashingHelper.MD5Hash(user.Password);
             userDal.Update(user);
+        }
+
+        public int UserCount()
+        {
+            return userDal.Count();
         }
     }
 }

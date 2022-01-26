@@ -15,8 +15,8 @@ namespace MvcSimpleBlog.Business.ValidationRules.FluentValidation
         {
             RuleFor(x => x.Username).NotEmpty().WithMessage("User name is can't be empty.")
                 .MinimumLength(2).WithMessage("User name must be longer than 2 character.")
-                .MaximumLength(25).WithMessage("User name must be shorter than 25 character.")
-                .Matches("^[a-zA-Z0-9._]$").WithMessage("User name containable just alphabetic characters and numbers.");
+                .MaximumLength(25).WithMessage("User name must be shorter than 25 character.");
+                //.Matches(@"^[a-zA-Z-']*$").WithMessage("User name containable just alphabetic characters and numbers.");
 
             RuleFor(x => x).Must(UsernameControl).WithMessage("User name must be unique.");
 

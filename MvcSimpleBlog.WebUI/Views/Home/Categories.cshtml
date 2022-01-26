@@ -1,0 +1,16 @@
+﻿@model IEnumerable<MvcSimpleBlog.Entities.Concrete.Category>
+@{
+    ViewBag.Title = "Categories";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Categories</h2>
+
+<ul class="list-group">
+    @foreach (var item in Model)
+    {
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <a href="/@item.SeoUrl">@item.Name</a>
+            <span class="badge bg-primary rounded-pill">@item.Blogs.Count()</span>
+        </li>
+    }
+<ul>

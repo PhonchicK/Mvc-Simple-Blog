@@ -22,9 +22,10 @@ namespace MvcSimpleBlog.WebUI.Controllers
             this.categoryService = categoryService;
         }
 
-        [Route("page?")]
+        [Route("{page:int?}")]
         public ActionResult Index(int page = 1)
         {
+            ViewBag.pageCount = (int)((categoryService.CategoryCount() + 9) / 10);
             return View(categoryService.GetAll(page));
         }
 
@@ -35,7 +36,7 @@ namespace MvcSimpleBlog.WebUI.Controllers
             return View(new Category());
         }
 
-        [HttpGet]
+        [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("new")]
         public ActionResult Create(Category category)
@@ -59,7 +60,7 @@ namespace MvcSimpleBlog.WebUI.Controllers
             return View(category);
         }
 
-        [HttpGet]
+        [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("edit/{id}")]
         public ActionResult Details(int id, Category category)

@@ -26,6 +26,11 @@ namespace MvcSimpleBlog.Business.Concrete
             categoryDal.Add(category);
         }
 
+        public int CategoryCount()
+        {
+            return categoryDal.Count();
+        }
+
         public void Delete(Category category)
         {
             categoryDal.Delete(category);
@@ -33,12 +38,12 @@ namespace MvcSimpleBlog.Business.Concrete
 
         public List<Category> GetAll(int page = 1, int itemPerPage = 10)
         {
-            return categoryDal.GetList().Skip((page - 1) * itemPerPage).Take(itemPerPage).ToList();
+            return categoryDal.GetAllDetails().Skip((page - 1) * itemPerPage).Take(itemPerPage).ToList();
         }
 
         public Category GetById(int id)
         {
-            return categoryDal.Get(c => c.Id == id);
+            return categoryDal.GetDetails(c => c.Id == id);
         }
 
         [FluentValidationAspect(typeof(CategoryValidator))]

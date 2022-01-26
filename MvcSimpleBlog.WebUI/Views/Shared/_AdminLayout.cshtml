@@ -36,16 +36,16 @@
                             @Html.ActionLink("Blogs", "Index", "AdminBlog", new { Area = "admin" }, new { @class = "nav-link" })
                         </li>
                         <li class="nav-item px-2">
-                            <a href="categories.html" class="nav-link">Categories</a>
+                            @Html.ActionLink("Categories", "Index", "AdminCategory", new { Area = "admin" }, new { @class = "nav-link" })
                         </li>
                         <li class="nav-item px-2">
-                            <a href="Users.html" class="nav-link">Users</a>
+                            @Html.ActionLink("Users", "Index", "AdminUser", new { Area = "admin" }, new { @class = "nav-link" })
                         </li>
                     </ul>
 
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a href="@Url.Action("Index", "Home")" class="nav-link">
+                            <a href="@Url.Action("Index", "Home", new { Area = "" })" class="nav-link">
                                 <i class="fas fa-arrow-alt-circle-left"></i> Return To Blog
                             </a>
                         </li>
@@ -223,6 +223,6 @@
 <script src="~/Content/Admin/js/bootstrap.min.js"></script>
 <script src="https://cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
 <script src="~/Content/Admin/js/js.js"></script>
-@*<script>
-                CKEDITOR.replace('editor1');
-    </script>*@
+<script>
+    CKEDITOR.replace('editor1');
+</script>

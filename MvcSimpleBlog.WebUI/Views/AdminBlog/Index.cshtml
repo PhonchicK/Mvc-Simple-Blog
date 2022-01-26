@@ -55,19 +55,20 @@
                             @if (page != 1)
                             {
                                 <li class="page-item">
+                                    @Html.ActionLink("Previous", "Index", new { page = page - 1 }, new { @class = "page-link" })
                                     <a href="#" class="page-link">Previous</a>
                                 </li>
                             }
                             @for (int i = 1; i <= ViewBag.pageCount; i++)
                             {
                                 <li class="page-item@(i == page ? " active" : "")">
-                                    <a href="" class="page-link ">@i</a>
-                                </li>
+                                    @Html.ActionLink(i.ToString(), "Index", new { page = i}, new { @class = "page-link" })
+                                </li>   
                             }
                             @if (page < ViewBag.pageCount)
                             {
                                 <li class="page-item">
-                                    <a href="" class="page-link">Next</a>
+                                    @Html.ActionLink("Next", "Index", new { page = page + 1 }, new { @class = "page-link" })
                                 </li>
                             }
                         </ul>

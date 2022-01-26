@@ -11,6 +11,7 @@ namespace MvcSimpleBlog.Business.Abstract
     {
         List<Category> GetAll(int page = 1, int itemPerPage = 10);
         Category GetById(int id);
+        int CategoryCount();
         void Add(Category category);
         void Update(Category category);
         void Delete(Category category);

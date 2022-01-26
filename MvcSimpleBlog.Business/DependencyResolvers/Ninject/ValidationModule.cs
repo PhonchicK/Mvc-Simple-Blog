@@ -15,6 +15,8 @@ namespace MvcSimpleBlog.Business.DependencyResolvers.Ninject
         public override void Load()
         {
             Bind<IValidator<Blog>>().To<BlogValidator>().InSingletonScope();
+            Bind<IValidator<Category>>().To<CategoryValidator>().InSingletonScope();
+            Bind<IValidator<User>>().To<UserValidator>().InSingletonScope();
         }
     }
 }

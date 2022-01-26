@@ -35,9 +35,9 @@ namespace MvcSimpleBlog.WebUI.Controllers
         {
             var model = new AdminHomeViewModel()
             {
-                TotalBlogs = blogService.GetAll().Count,
-                TotalCategories = categoryService.GetAll().Count,
-                TotalUsers = userService.GetAll().Count,
+                TotalBlogs = blogService.BlogCount(),
+                TotalCategories = categoryService.CategoryCount(),
+                TotalUsers = userService.UserCount(),
                 LatestBlogs = blogService.GetAll()
             };
             return View(model);
