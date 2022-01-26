@@ -24,13 +24,29 @@ namespace MvcSimpleBlog.WebUI.Controllers
         [Route("{page:int?}")]
         public ActionResult Index(int page = 1)
         {
+            ViewBag.page = page;
+            ViewBag.pageCount = (int)((blogService.BlogCount() + 9) / 10);
             return View(blogService.GetAll(page));
         }
 
-        [Route("{category}/{page:int?}")]
-        public ActionResult Index(string category, int page = 1)
+        [Route("category/{category}/{page:int?}")]
+        public ActionResult Category(string category, int page = 1)
         {
+            ViewBag.page = page;
+            ViewBag.pageCount = (int)((blogService.BlogCount() + 9) / 10);
             return View(blogService.GetByCategorySeoUrl(category, page));
+        }
+
+        [Route("about")]
+        public ActionResult About()
+        {
+            return View();
+        }
+
+        [Route("contact")]
+        public ActionResult Contact()
+        {
+            return View();
         }
 
         [Route("details/{seoUrl}")]
@@ -43,10 +59,8 @@ namespace MvcSimpleBlog.WebUI.Controllers
         [Route("categories")]
         public ActionResult Categories()
         {
-            return View(categoryService.GetAll(1, categoryService.CategoryCount()));
+            return View(categoryService.GetAll(1, categoryService.CategoryCount()));//Show all categories in one page
         }
-
-
 
         [ChildActionOnly]
         public PartialViewResult CategoriesMenu()

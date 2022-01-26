@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<MvcSimpleBlog.Entities.Concrete.Blog>
 @using System.Text.RegularExpressions;
 @{
-    ViewBag.Title = "Home";
+    ViewBag.Title = "Category Details";
     string ScrubHtml(string value)
     {
         var step1 = Regex.Replace(value, @"<[^>]+>|&nbsp;", "").Trim();
@@ -34,20 +34,20 @@
         @if (ViewBag.page != 1)
         {
             <li class="page-item">
-                @Html.ActionLink("Previous", "Index", new { page = ViewBag.page - 1 }, new { @class = "page-link" })
+                @Html.ActionLink("Previous", "Category", new { page = ViewBag.page - 1 }, new { @class = "page-link" })
             </li>
         }
         @for (int i = 1; i <= ViewBag.pageCount; i++)
         {
             <li class="page-item@(i == ViewBag.page ? " active" : "")">
-                @Html.ActionLink(i.ToString(), "Index", new { page = i }, new { @class = "page-link" })
+                @Html.ActionLink(i.ToString(), "Category", new { page = i }, new { @class = "page-link" })
             </li>
 
         }
         @if (ViewBag.page < ViewBag.pageCount)
         {
             <li class="page-item">
-                @Html.ActionLink("Next", "Index", new { page = ViewBag.page + 1 }, new { @class = "page-link" })
+                @Html.ActionLink("Next", "Category", new { page = ViewBag.page + 1 }, new { @class = "page-link" })
             </li>
         }
     </ul>

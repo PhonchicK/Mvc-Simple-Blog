@@ -2,5 +2,5 @@
 
 @foreach (var item in Model)
 {
-    <li class="list-group-item"><a href="/@item.SeoUrl">@item.Name</a></li>
+    <li class="list-group-item"><a href="@Url.Action("Category", new { Area = "", category = item.SeoUrl })">@item.Name</a></li>
 }

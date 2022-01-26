@@ -8,9 +8,9 @@
 <ul class="list-group">
     @foreach (var item in Model)
     {
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-            <a href="/@item.SeoUrl">@item.Name</a>
-            <span class="badge bg-primary rounded-pill">@item.Blogs.Count()</span>
-        </li>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+        <a href="@Url.Action("Category", new { Area = "", category = item.SeoUrl })">@item.Name</a>
+        <span class="badge bg-primary rounded-pill">@item.Blogs.Count()</span>
+    </li>
     }
 <ul>

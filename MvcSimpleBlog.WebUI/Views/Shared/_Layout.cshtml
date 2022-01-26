@@ -12,23 +12,20 @@
 <body>
     <!-- navbar start -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
-        <a class="navbar-brand" href="#">Blog</a>
+        <a class="navbar-brand" href="/">Blog</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                <li class="nav-item@(ViewBag.Title == "Home" ? " active" : null)">
+                    <a class="nav-link" href="@Url.Action("Index", new { Area = "" })">Home</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
+                <li class="nav-item@(ViewBag.Title == "About" ? " active" : null)">
+                    <a class="nav-link" href="@Url.Action("About", new { Area = "" })">About</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Notification</a>
+                <li class="nav-item@(ViewBag.Title == "Contact" ? " active" : null)">
+                    <a class="nav-link" href="@Url.Action("Contact", new { Area = "" })">Contact</a>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
